@@ -1,6 +1,6 @@
 import os
 from re import template
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -47,7 +47,7 @@ def botaoenviar():
         email = request.form.get('email')
         contato = request.form.get('contato')
                 
-        if cliente and datahora and email and contato:
+        if cliente and datahora and email and contato and servico:
             temp = Cadastro(cliente, datahora, email, contato, servico)
             db.session.add(temp)
             db.session.commit()
@@ -69,5 +69,27 @@ def excluir(id):
     cadastrados = Cadastro.query.all()
     return render_template('relatorio.html', cadastrados=cadastrados)
 
+@app.route('/editar/<int:id>', methods=['GET','POST'])
+def editar(id):
+    cadastrado = Cadastro.query.filter_by(_id=id).first()
+    
+    if request.method == 'POST':
+            cliente = request.form.get('cliente')
+            datahora = request.form.get('datahora')
+            email = request.form.get('email')
+            contato = request.form.get('contato')
+                
+            if cliente and datahora and email and contato:
+                cadastrado.cliente = cliente
+                cadastrado.datahora = datahora
+                cadastrado.email = email
+                cadastrado.contato = contato
+
+                db.session.commit()
+
+                return redirect(url_for('relatorio'))
+
+    return render_template('editar.html', cadastrado=cadastrado)
+                  
 if __name__ == "__main__":
     app.run(debug = True)

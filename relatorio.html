@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <meta charset="utf-8"> 
-        <title>Agenda Facil</title>
+        <title>RELATORIO</title>
         <style>
             body{
                 padding-top: 30px;
@@ -27,7 +27,7 @@
     </head>
     <body>
         <h1>
-            <p><h1>TABELA: CADASTO DE AGENDAMENTOS</h1></p>
+            <p><h1>CADASTO DE CLIENTES</h1></p>
             <table>
                 <tr>
                     <td>ID</td>
@@ -37,16 +37,18 @@
                     <td>Contato</td>
                     <td>Serviço</td>
                     <td>Excluir</td>
+                    <td>Editar</td>
                 </tr>
-                {% for cadastrados in cadastrados %}
+                {% for cadastrado in cadastrados %}
                 <tr>
-                    <td>{{ cadastrados._id }}</td>
-                    <td>{{ cadastrados.cliente }}</td>
-                    <td>{{ cadastrados.datahora }}</td>
-                    <td>{{ cadastrados.email }}</td>
-                    <td>{{ cadastrados.contato }}</td>
-                    <td>{{ cadastrados.servico }}</td>
-                    <td><a href="/excluir/{{ cadastrados._id }}">X</a></td>
+                    <td>{{ cadastrado._id }}</td>
+                    <td>{{ cadastrado.cliente }}</td>
+                    <td>{{ cadastrado.datahora }}</td>
+                    <td>{{ cadastrado.email }}</td>
+                    <td>{{ cadastrado.contato }}</td>
+                    <td>{{ cadastrado.servico }}</td>
+                    <td><a href='/excluir/{{ cadastrado._id }}'>EX</a></td>
+                    <td><a href='/editar/{{ cadastrado._id }}'>ED</a></td>
                 </tr>
                 {% endfor %}
             </table>

@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, url_for, request, redirect
-from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -29,7 +28,7 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 

@@ -1,9 +1,12 @@
 import os
 import sqlite3
 from flask import Flask, render_template, url_for, request, redirect
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+cors = CORS(app, resouce={r'/*':{'origins': '*'}})
 
 app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///db.sqlite'
 
@@ -29,7 +32,7 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 

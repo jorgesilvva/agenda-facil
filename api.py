@@ -32,7 +32,7 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/index)
+@app.route('/index')
 def index():
     return render_template('index.html')
 

@@ -91,4 +91,4 @@ def editar(id):
     return render_template('editar.html', cadastrado=cadastrado)
                   
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run()

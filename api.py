@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-cors = CORS(app, resouce={r'/*':{'origins': '*'}})
+cors = CORS()
 
 app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///db.sqlite'
 
@@ -32,7 +32,7 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/', methods=['OPTIONS'])
+@app.route('/index)
 def index():
     return render_template('index.html')
 

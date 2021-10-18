@@ -1,12 +1,8 @@
 import os
 from flask import Flask, render_template, url_for, request, redirect
-from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
-cors = CORS(app, resouce={r'/*':{'origins': '*'}})
-
 app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///db.sqlite'
 
 db = SQLAlchemy(app)
@@ -31,7 +27,7 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -93,10 +89,6 @@ def editar(id):
                 return redirect(url_for('relatorio'))
 
     return render_template('editar.html', cadastrado=cadastrado)
-
-def main():
-    port= int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-
+                  
 if __name__ == "__main__":
-    main()
+    app.run(debug = True)

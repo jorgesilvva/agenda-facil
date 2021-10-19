@@ -36,7 +36,7 @@ db.create_all()
 def index():
     return render_template("index.html")
 
-@app.route('/botaogendar', methods=['POST')
+@app.route('/botaogendar', methods=['GET','POST'])
 def botaoagendar():
         global servico
         if request.method == 'POST':

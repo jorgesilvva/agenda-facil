@@ -32,11 +32,11 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET'])
 def index():
     return render_template("index.html")
 
-@app.route('/botaogendar', methods=['GET')
+@app.route('/botaogendar', methods=['POST')
 def botaoagendar():
         global servico
         if request.method == 'POST':

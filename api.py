@@ -32,7 +32,7 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template("index.html")
 
@@ -96,4 +96,4 @@ def editar(id):
     return render_template('editar.html', cadastrado=cadastrado)
  
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=3002, debug=True)

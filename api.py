@@ -16,25 +16,18 @@ class Cadastro(db.Model):
 
     __tablename__= 'agendamentos'
 
-    _id = db.Column(db.Integer , primary_key=True, autoincrement=True)
+    _id = db.Column(db.Integer , primary_key=True)
     cliente = db.Column(db.String)
     datahora = db.Column(db.String)
     email = db.Column(db.String)
     contato = db.Column(db.String)
     servico = db.Column(db.String)
 
-    def __init__(self, cliente, datahora, email, contato, servico):
-        self.cliente = cliente
-        self.datahora = datahora
-        self.email = email
-        self.contato = contato
-        self.servico = servico
-
 db.create_all()
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET','POST'])
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
 
 @app.route('/botaogendar', methods=['GET','POST'])
 def botaoagendar():
@@ -94,6 +87,6 @@ def editar(id):
                 return redirect(url_for('relatorio'))
 
     return render_template('editar.html', cadastrado=cadastrado)
- 
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=3002, debug=True)

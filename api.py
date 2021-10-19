@@ -94,9 +94,6 @@ def editar(id):
                 return redirect(url_for('relatorio'))
 
     return render_template('editar.html', cadastrado=cadastrado)
-
-def main():
-    port= int(os.environ.get('PORT', 3002))
-    app.run(host='0.0.0.0', port=port)
-    
+ 
 if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, debug=True)

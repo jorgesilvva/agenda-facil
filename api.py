@@ -16,7 +16,7 @@ class Cadastro(db.Model):
 
     __tablename__= 'agendamentos'
 
-    _id = db.Column(db.Integer , primary_key=None)
+    _id = db.Column(db.Integer , primary_key=True)
     cliente = db.Column(db.String)
     datahora = db.Column(db.String)
     email = db.Column(db.String)

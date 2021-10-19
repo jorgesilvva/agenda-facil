@@ -1,11 +1,16 @@
 import os
 import sqlite3
 from flask import Flask, render_template, url_for, request, redirect
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+cors = CORS(app, resouce={r'/*':{'origins': '*'}})
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///db.sqlite'
 
 db = SQLAlchemy(app)
 
@@ -13,12 +18,19 @@ class Cadastro(db.Model):
 
     __tablename__= 'agendamentos'
 
-    _id = db.Column(db.Integer , primary_key=True)
+    _id = db.Column(db.Integer , primary_key=True, autoincrement=True)
     cliente = db.Column(db.String)
     datahora = db.Column(db.String)
     email = db.Column(db.String)
     contato = db.Column(db.String)
     servico = db.Column(db.String)
+
+    def __init__(self, cliente, datahora, email, contato, servico):
+        self.cliente = cliente
+        self.datahora = datahora
+        self.email = email
+        self.contato = contato
+        self.servico = servico
 
 db.create_all()
 
@@ -86,4 +98,4 @@ def editar(id):
     return render_template('editar.html', cadastrado=cadastrado)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

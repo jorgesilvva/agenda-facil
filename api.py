@@ -25,7 +25,7 @@ class Cadastro(db.Model):
 
 db.create_all()
 
-@app.route('/', methods=['GET')
+@app.route('/', methods=['GET', 'POST')
 def index():
     return render_template('index.html')
 

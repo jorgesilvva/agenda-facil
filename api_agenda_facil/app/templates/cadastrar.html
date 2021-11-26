@@ -1,0 +1,38 @@
+{% extends 'viewbase.html' %}
+
+{%block title%} Cadastrar {% endblock %}
+
+{%block content%}
+        <h1>CADASTRO:</h1>
+        <br>      
+        <form class="geral" action="{{ url_for('final') }}" method="POST">
+            <div><p>Informe o nome completo ... <input type="text" name="cliente" placeholder="Nome completo" required></p></div>
+
+            <div><p>Informe seu melhor e-mail .. <input type="email" name="email" placeholder="e-mail" required></p></div>
+
+            <div><p>Informe o (DDD+telefone) ... <input type="tel" name="contato" placeholder="Contato" required></p></div>
+
+            <div><p>Informe a data ..................... <input type="date" name="data" id="txtDat" onchange="validarData(this)" required></p></div>
+
+            <div><p>Informe um horário .............. <select type= "time" name="horario" required>
+                <option value="">hh:mm</option>
+                <option value="08:00">08:00</option>
+                <option value="08:40">08:40</option>
+                <option value="09:20">09:20</option>
+                <option value="10:00">10:00</option>
+                <option value="10:40">10:40</option>
+                <option value="11:20">11:20</option>
+                <option value="13:00">13:00</option>
+                <option value="13:40">13:40</option>
+                <option value="14:20">14:20</option>
+                <option value="15:00">15:00</option>
+                <option value="15:40">15:40</option>
+                <option value="16:20">16:20</option>
+                <option value="17:00">17:00</option>
+                <option value="17:40">17:40</option>
+                <option value="18:20">18:20</option></select>
+            </p></div>
+            <h3><button class="geral" type= "submit" onchange="">ENVIAR</button></h3>
+         </form>
+         <script src="../static/alert.js"></script>
+{% endblock %}

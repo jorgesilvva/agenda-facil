@@ -1,0 +1,26 @@
+{% extends 'viewbase.html' %}
+
+{%block title%} Serviços {% endblock %}
+
+{%block content%}
+        <h1>SERVIÇOS:</h1>
+        <br>
+        <form class="geral" action="{{ url_for('cadastrar') }}" method="POST">          
+            <div><p><input type="radio" id="contactChoice1" name="servico" value="Corte de Cabelo" required>
+            <label for="contactChoice1">Corte de Cabelo .... $$</label></p></div>
+
+            <div><p><input type="radio" id="contactChoice2" name="servico" value="Corte de Barba" required>
+            <label for="contactChoice2">Corte de Barba ...... $$</label></p></div>
+
+            <div><p><input type="radio" id="contactChoice3" name="servico" value="Cabelo e Barba" required>
+            <label for="contactChoice3">Cabelo & Barba ..... $$</label></p></div>
+
+            <div><p><input type="radio" id="contactChoice3" name="servico" value="Corte Infantil" required>
+            <label for="contactChoice4">Corte Infantil .......... $$</label></p></div>
+
+            <div><p><input type="radio" id="contactChoice3" name="servico" value="Reflexo ou Luz" required>
+            <label for="contactChoice4">Reflexo ou Luzes ... $$</label></p></div>
+
+            <h3><button class="geral" type="submit">ENVIAR</button></h3>
+        </form>
+{% endblock %}

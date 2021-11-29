@@ -14,22 +14,22 @@ from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-#Função para enviar e-mail (esconder senha)
+#Função para enviar e-mail
 def enviar_email():
     #Composição do e-mail
      msg = MIMEMultipart()
      msg['Subject'] = servico
-     msg['From'] = "jorgesilva.docs@gmail.com"
-     msg['To'] = email # + "add mais um email@email.com do prorietario"
+     msg['From'] = "ducorts.barbearia@gmail.com"
+     msg['To'] = email
      texto = "Agendamento confirmado para o dia: " + data + " as " + horario
      msg.attach(MIMEText(texto, 'plain'))
-     #Login e envio (Falta esconder senha)
+     #Login e envio
      server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-     server.login("jorgesilva.docs@gmail.com", "303141jormail")
+     server.login("ducorts.barbearia@gmail.com", "du2021sucesso")
      server.sendmail(msg['From'], msg['To'], msg.as_string())
      server.quit() 
 
-#Rota página index
+#Rota pata a página index
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -37,7 +37,7 @@ def index():
 #Rota para pagina cadastrar
 @app.route('/cadastrar', methods=['GET','POST'])
 def cadastrar():
-        # Entrada do formulário servico
+        # Entrada do formulário serviço
         global servico
         if request.method == 'POST':
            servico = request.form['servico']
@@ -62,14 +62,13 @@ def final():
             try:
                db.session.add(temp)
                db.session.commit()
-               #enviar_email()
+               enviar_email()
                return render_template('final.html')
-
             except:
                db.session.rollback()                     
                return render_template('aviso.html', cadastrado = temp)
 
-#Rota para imprimir o cadastros
+#Rota para imprimir o cadastro
 @app.route('/cadastro')
 def cadastro():
     cadastrados = Cadastro.query.all()
@@ -84,7 +83,7 @@ def excluir_cadastro(id):
     cadastrados = Cadastro.query.all()
     return render_template('cadastro.html', cadastrados=cadastrados)
 
-#Rota para editar informação do cadastro, eviar e-mail e voltar pro cadastro
+#Rota para editar informação do cadastro, eviar e-mail e voltar para o cadastro
 @app.route('/editar_cadastro/<int:id>', methods=['GET','POST'])
 def editar_cadastro(id):
     cadastrado = Cadastro.query.filter_by(_id=id).first()
@@ -110,7 +109,7 @@ def editar_cadastro(id):
             cadastrado.datahora = datahora
             try:
                 db.session.commit()
-                #enviar_email()
+                enviar_email()
                 return redirect(url_for('cadastro'))
             except:
                 db.session.rollback()
@@ -146,7 +145,7 @@ def excluir_agenda(id):
     resultados = Cadastro.query.filter(Cadastro.data >= hoje).order_by(Cadastro.data.asc(), Cadastro.horario.asc()).all()  
     return render_template('agenda.html', resultados=resultados)
 
-#Rota para editar informação da agenda, eviar e-mail e voltar pra agenda
+#Rota para editar informação da agenda, eviar e-mail e voltar para agenda
 @app.route('/editar_agenda/<int:id>', methods=['GET','POST'])
 def editar_agenda(id):
     cadastrado = Cadastro.query.filter_by(_id=id).first()
@@ -172,16 +171,15 @@ def editar_agenda(id):
            cadastrado.datahora = datahora
            try:
                 db.session.commit()
-                #enviar_email()
+                enviar_email()
                 return redirect(url_for('agenda'))
            except:
                 db.session.rollback()
                 temp_ag = Cadastro(cliente, email, contato, data, horario, servico, datahora)
-                #flash("DATA OU HORÁRIO INDISPONÍVEL")
                 return render_template ('alerta.html', cadastrado = temp_ag)
     return render_template('editar.html', cadastrado=cadastrado)
 
-#Rota para o registro
+#Rota para a página registro
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
     if request.method == 'POST':
@@ -194,7 +192,7 @@ def registro():
         return redirect(url_for('login'))
     return render_template('registro.html')
 
-#Rota página login
+#Rota para a página login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -207,11 +205,12 @@ def login():
         return redirect(url_for('painel'))
     return render_template('login.html')
 
+#Rota para a página painel
 @app.route('/painel')
 def painel():
     return render_template('painel.html')
 
-#Rota página logout
+#Rota para redirecionamento logout
 @app.route('/logout')
 def logout():
     logout_user()

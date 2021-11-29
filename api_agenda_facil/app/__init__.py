@@ -13,7 +13,3 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 db = SQLAlchemy(app)
-
-@app.template_filter('cadastrado.data')
-def format_datetime(value):
-    return value.strptime('%d/%m/%Y')

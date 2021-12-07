@@ -25,3 +25,10 @@
   <p>Projeto Integrador I - <a href="meuemail@example.com">meuemail@example.com</a></p>
 </footer>
 </html>
+{% else %}
+
+<script>
+  window.location.href = "{{ url_for('login') }}"
+</script>
+
+{% endif %}

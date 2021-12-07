@@ -19,13 +19,13 @@ def enviar_email():
     #Composição do e-mail
      msg = MIMEMultipart()
      msg['Subject'] = servico
-     msg['From'] = "ducorts.barbearia@gmail.com"
+     msg['From'] = "seuemail@mail.com"
      msg['To'] = email
      texto = "Agendamento confirmado para o dia: " + data + " as " + horario
      msg.attach(MIMEText(texto, 'plain'))
      #Login e envio
      server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-     server.login("ducorts.barbearia@gmail.com", "du2021sucesso")
+     server.login("seuemail@mail.com", "*******")
      server.sendmail(msg['From'], msg['To'], msg.as_string())
      server.quit() 
 

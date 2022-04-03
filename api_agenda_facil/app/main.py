@@ -29,7 +29,7 @@ def enviar_email():
      server.sendmail(msg['From'], msg['To'], msg.as_string())
      server.quit() 
 
-#Rota pata a página index
+#Rota para a página index
 @app.route('/')
 def index():
     return render_template('index.html')

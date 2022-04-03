@@ -16,7 +16,7 @@ from email.mime.multipart import MIMEMultipart
 
 #Função para enviar e-mail
 def enviar_email():
-    #Composição do e-mail
+     #Composição do e-mail
      msg = MIMEMultipart()
      msg['Subject'] = servico
      msg['From'] = "ducorts.barbearia@gmail.com"

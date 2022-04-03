@@ -16,18 +16,22 @@ from email.mime.multipart import MIMEMultipart
 
 #Função para enviar e-mail
 def enviar_email():
+     #Formata a data
+     data_str = '%Y-%m-%d'
+     datetime_obj = datetime.strptime(data, data_str)
+     data_fmt = datetime_obj.strftime("%d/%m/%Y")
      #Composição do e-mail
      msg = MIMEMultipart()
      msg['Subject'] = servico
-     msg['From'] = "ducorts.barbearia@gmail.com"
+     msg['From'] = "Barbearia Du Cortes <ducorts.barbearia@gmail.com>"
      msg['To'] = email
-     texto = "Agendamento confirmado para o dia: " + data + " as " + horario
+     texto = "Agendamento confirmado para o dia: " +  data_fmt + ", às " + horario + " h."
      msg.attach(MIMEText(texto, 'plain'))
      #Login e envio
      server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
      server.login("ducorts.barbearia@gmail.com", "du2021sucesso")
      server.sendmail(msg['From'], msg['To'], msg.as_string())
-     server.quit() 
+     server.quit()
 
 #Rota para a página index
 @app.route('/')

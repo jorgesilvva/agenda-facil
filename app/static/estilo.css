@@ -1,0 +1,239 @@
+@charset "utf-8";
+
+  /* Geral */
+  body {
+    background-image: url('../static/img.jpg');
+    background-size: 100%;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  a:hover {
+    color:#0D58BD;
+  }
+
+  /* Formulários */
+
+  h1 {
+    margin-top: 8vh;
+    text-align: center;
+    color:#FF7F00;
+  }
+
+  h2.consulta {
+    text-align: center;
+    color:#FF7F00;
+  }
+
+  label.alerta {
+    font-size: 1rem;
+    text-align: center;
+    color: yellow;
+    width: 100% !important;
+  }
+
+  form.geral {
+    color: blanchedalmond;
+    text-align: center;
+    margin: auto;
+  }
+
+  div {
+    color: blanchedalmond;
+    font-size: 90%;
+    text-align: center;
+    width: 100% !important;
+    height: 100% !important;
+    margin: auto;
+  }
+
+  input [type="radio"], [type="text"], [type="email"], [type="tel"], [type="date"], [type="time"] {
+    font-size: 90%;
+    width: 285px;
+    height: 35px;
+  }
+
+  select {
+    font-size: 90%;
+    width: 285px;
+    height: 35px;
+    margin: auto;
+  }
+
+  /* Botões */
+  h2 {
+    text-align: center;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  h3 {
+    margin-top: 3vh;
+    text-align: center;
+    width: 100% !important;
+    height: 100% !important;
+  }
+      
+  button.geral {
+    background-color:#0D58BD;
+    padding: 10px 30px ;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    color: blanchedalmond;
+    margin: auto;    
+  }
+
+  button:hover {
+    background-color:#FF7F00;
+    transition: .5s;
+  }
+
+  .button2 {
+    background-color:white;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    color: black;
+    margin: auto;
+  }
+
+  .button2:hover {
+    background-color:#FF7F00;
+    transition:.5s;
+  }
+
+  /* Tabelas*/
+  table {
+    background-color: #FFF;
+    display:center;
+    border: solid 2px burlywood;
+    font-family: sans-serif;
+    color: black;
+    font-size: 60%;
+    width: 70% !important;
+    height: 70% !important;
+    margin: auto;
+  }     
+
+  tr, td {
+    padding: 0.3em;
+    margin: 0;
+    text-align: center;
+  }
+    
+  /* Login e Registro */
+
+  .login {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: #323232;
+    border: none;
+  }
+  
+  a.login {
+    font-size: .8rem;
+  }
+    
+  #login-container {  
+    background-color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
+    width: 36vh !important;
+    padding: 20px 30px;
+    margin-top: 18vh;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  #registro-container {  
+    background-color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
+    width: 36vh !important;
+    padding: 25px 30px;
+    margin-top: 2.1vh;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  h1.login {
+    font-size: 2rem;
+    color: #323232;
+  }
+
+  form.login {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  label.login, input.login {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  label.login {
+    font-weight: bold;
+    font-size: .8rem;
+  }
+      
+  input.login {
+    border-bottom: 2px solid #323232;
+    padding: 12px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  input.login:focus {
+    border-bottom: 2px solid #08558B;
+  }
+      
+  #forgot-pass.login {
+    display: block;
+    text-align: right;
+  }
+      
+  input[type="submit"] {
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #08558B;
+    font-weight: bold;
+  }
+
+  input[type="submit"]:hover.login {
+  background-color: #1B223C;
+  transition: .5s;
+  }
+
+  /* Rodapé */
+  footer{
+  padding-top: 3vh;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  color: blanchedalmond;
+  text-align: center;
+  height: 10vh;
+  width: auto;
+  }
+  
